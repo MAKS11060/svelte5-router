@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { LinkProps } from "./Link";
-  import { useHistory, useLocation, useRouter } from "../../lib/contexts.js";
-  import { resolve, shouldNavigate } from "../../lib/utils.js";
+  import {useHistory, useLocation, useRouter} from "../../lib/contexts.js";
+  import {resolve, shouldNavigate} from "../../lib/utils.js";
+  import type {LinkProps} from "./Link";
 
   let {
     children,
@@ -19,9 +19,23 @@
   const { navigate } = useHistory();
 
   let href = $derived(resolve(to, $base.uri));
-  let isPartiallyCurrent = $derived($location.pathname.startsWith(href));
   let isCurrent = $derived(href === $location.pathname);
-  let ariaCurrent = $derived(isCurrent ? "page" : undefined);
+  let isPartiallyCurrent = $derived.by(() => {
+    const pathSegments = $location.pathname.split("/").filter(Boolean);
+    const hrefSegments = href.split("/").filter(Boolean);
+
+    if (hrefSegments.length < 1) return false
+    if (pathSegments.length <= hrefSegments.length) return false;
+
+    for (let i = 0; i < hrefSegments.length; i++) {
+      if (hrefSegments[i] !== pathSegments[i]) {
+        return false;
+      }
+    }
+
+    return true;
+  });
+
   // let properties = $derived(
   //   getProps({
   //     location: $location,
@@ -44,7 +58,12 @@
   };
 </script>
 
-<a {href} aria-current={ariaCurrent as any} onclick={onClick} {...props}>
+<a
+  {href}
+  aria-current={isCurrent ? "page" : isPartiallyCurrent ? "step" : undefined}
+  onclick={onClick}
+  {...props}
+>
   <!-- <slot active={!!ariaCurrent} /> -->
-  {@render children(!!ariaCurrent)}
+  {@render children(Boolean(isCurrent))}
 </a>

@@ -1,9 +1,13 @@
 node_modules
+deno.lock
 package-lock.json
+pnpm-lock.yaml
 yarn.lock
+
+.svelte-kit
+dist
+
 example/public/*
 !example/public/global.css
-pnpm-lock.yaml
 .idea
 .DS_Store
-.svelte-kit
