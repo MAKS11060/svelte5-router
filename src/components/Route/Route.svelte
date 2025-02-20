@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { onMount, onDestroy } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import { useRouter } from "../../lib/contexts.js";
   import { canUseDOM } from "../../lib/utils.js";
-  import type { RouteProps, RouteParams } from "./Route.js";
+  import { type RouteParams, type RouteProps, isAsync } from "./Route.js";
 
   let { path = "", component, children, ...rest }: RouteProps = $props();
 
@@ -17,6 +17,8 @@
     // that is rendered if no other Route in the Router is a match.
     default: path === "",
   };
+
+  const PropComponent = isAsync(component) ? component() : component;
 
   $effect.pre(() => {
     if ($activeRoute && $activeRoute.route === route) {
@@ -33,13 +35,17 @@
   onDestroy(() => {
     unregisterRoute(route);
   });
-
-  let PropComponent = component;
 </script>
 
 {#if $activeRoute && $activeRoute.route === route}
-  {#if PropComponent}
+  {#if PropComponent && PropComponent instanceof Function}
     <PropComponent {...routeParams} {...rest} />
+  {:else if PropComponent && PropComponent instanceof Promise}
+    {#await PropComponent then C}
+      <C.default {...routeParams} />
+    {:catch error}
+      <p>{error.message}</p>
+    {/await}
   {:else}
     {@render children?.(routeParams)}
   {/if}

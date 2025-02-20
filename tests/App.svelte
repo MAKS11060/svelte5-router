@@ -1,12 +1,13 @@
 <!-- App.svelte -->
 <script>
-  import {Link, Route, Router} from "svelte5-router";
+  import { Link, Route, Router, dynamic } from "svelte5-router";
   import About from "./routes/About.svelte";
   import Blog from "./routes/Blog.svelte";
-  import BlogPost from "./routes/BlogPost.svelte";
   import Home from "./routes/Home.svelte";
 
-  export let url = "";
+  const BlogPost = dynamic(import("./routes/BlogPost.svelte"));
+
+  let url = $state("");
 </script>
 
 <Router {url}>

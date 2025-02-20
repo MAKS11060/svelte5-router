@@ -16,13 +16,18 @@
     "declarationDir": "./dist",
     "esModuleInterop": true,
     "outDir": "./dist",
-    // "rootDir": "./src",
+    // "rootDir": "./src"
   },
   // "include": [
+  //   // "**/*.{js,ts,svelte}"
   //   "src/**/*.ts",
   //   "src/**/*.js",
   //   "src/**/*.svelte",
   //   "tests/**/*.{js,ts,svelte}"
   // ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
