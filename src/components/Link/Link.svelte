@@ -60,7 +60,8 @@
 
 <a
   {href}
-  aria-current={isCurrent ? "page" : isPartiallyCurrent ? "step" : undefined}
+  aria-current={isCurrent ? "page" : undefined}
+  data-active-link={isCurrent ? "page" : isPartiallyCurrent ? "step" : undefined}
   onclick={onClick}
   {...props}
 >

@@ -1,5 +1,5 @@
-import { defineConfig } from "vite";
-import { svelte } from "@sveltejs/vite-plugin-svelte";
+import {svelte} from "@sveltejs/vite-plugin-svelte"
+import {defineConfig} from "vite"
 
 export default defineConfig({
   //root: "tests",
@@ -21,6 +21,6 @@ export default defineConfig({
     outDir: "dist",
   },
   resolve: {
-    conditions: ['browser']
-  }
+    conditions: ["browser"],
+  },
 });

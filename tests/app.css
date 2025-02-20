@@ -1,8 +1,23 @@
-body, :root, html {
+body,
+:root,
+html {
   padding: 0;
   margin: 0;
   width: 100dvw;
   height: 100dvh;
+
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
 }
 
 * {
@@ -12,4 +27,32 @@ body, :root, html {
 
 .container {
   margin: 1rem;
+}
+
+/* Link */
+:root {
+  --link-bg-active-page: #605dff;
+  --link-color-active-page: #fff;
+
+  --link-bg-active-step: #f43098;
+  --link-color-active-step: #fff;
+}
+
+.link {
+  padding: 0.5rem;
+  color: black
+}
+
+.link:hover {
+  background: #0004;
+}
+
+.link[data-active-link="page"] {
+  background: var(--link-bg-active-page);
+  color: var(--link-color-active-page);
+}
+
+.link[data-active-link="step"] {
+  background: var(--link-bg-active-step);
+  color: var(--link-color-active-step);
 }
