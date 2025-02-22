@@ -11,7 +11,8 @@ A declarative Svelte routing library with SSR support.
 ## Install
 
 ```bash
-npm i -D svelte5-router
+npm i -D maks11060/svelte5-router
+pnpm add maks11060/svelte5-router
 ```
 
 ## Usage
