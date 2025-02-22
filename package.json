@@ -1,14 +1,15 @@
 {
   "name": "svelte5-router",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "author": "Jacob Cutshall @jpcutshall",
   "license": "MIT",
   "type": "module",
   "description": "A declarative Svelte routing library with SSR support",
   "scripts": {
-    "package": "svelte-package",
+    "test": "vite -c vite.config.ts --force tests/",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "test": "vite -c vite.config.ts --force tests/"
+    "build": "svelte-package",
+    "prepare": "node scripts/check-git-install.js && npm run build || true"
   },
   "keywords": [
     "svelte routing",
