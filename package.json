@@ -42,7 +42,7 @@
     "build": "svelte-package",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "lint": "npx sort-package-json",
-    "prepare": "node scripts/check-git-install.mjs && npm run build || true",
+    "prepare": "npm run build",
     "test": "vite -c vite.config.ts --force tests/"
   },
   "devDependencies": {
