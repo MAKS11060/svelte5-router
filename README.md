@@ -1,12 +1,8 @@
-[![npm][npm]][npm-url]
-
 # Svelte5 Router
 
 Forked from [svelte-routing](https://github.com/EmilTholin/svelte-routing)
 
 A declarative Svelte routing library with SSR support.
-
-[[CHANGELOG][changelog-url]]
 
 ## Install
 
@@ -53,6 +49,47 @@ const app = mount(App, {
 });
 ```
 
+## Examples
+
+<details>
+<summary>Load async component</summary>
+
+```html
+<script>
+  import { Link, Route, Router, dynamic } from "svelte5-router";
+  import Blog from "./routes/Blog.svelte";
+  import Home from "./routes/Home.svelte";
+
+  const Blog = dynamic(import("./routes/Blog.svelte"));
+
+  let url = $state("");
+</script>
+
+<Router {url}>
+  <nav>
+    <Link class="link" to="/">Home</Link>
+    <Link class="link" to="/blog">Blog</Link>
+  </nav>
+
+  <div>
+    <Route path="/">
+      <Home />
+    </Route>
+    <Route path="/blog" component={Blog} />
+  </div>
+</Router>
+```
+
+</details>
+
+<details>
+<summary>Nested router</summary>
+
+[Example code](tests/App.svelte)
+
+</details>
+
+
 ## API
 
 #### `Router`
@@ -81,7 +118,7 @@ A component used to navigate around the application.
 
 |     Property     | Required | Default Value | Description                                                                                                                                                                                                                           |
 | :--------------: | :------: | :-----------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-|       `to`       |   ✔ ️   |     `"#"`     | URL the component should link to.                                                                                                                                                                                                     |
+|       `to`       |    ✔ ️    |     `"#"`     | URL the component should link to.                                                                                                                                                                                                     |
 |    `replace`     |          |    `false`    | When `true`, clicking the `Link` will replace the current entry in the history stack instead of adding a new one.                                                                                                                     |
 |     `state`      |          |     `{}`      | An object that will be pushed to the history stack when the `Link` is clicked.                                                                                                                                                        |
 |  ~~`getProps`~~  |          | `() => ({})`  | A function that returns an object that will be spread on the underlying anchor element's attributes. The first argument given to the function is an object with the properties `location`, `href`, `isPartiallyCurrent`, `isCurrent`. |
@@ -254,7 +291,3 @@ This project is licensed under the [**MIT**](LICENSE).
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for this project by you, shall be licensed as **MIT**, without any additional
 terms or conditions. [**Code of Conduct**](CODE_OF_CONDUCT.md).
-
-[npm]: https://img.shields.io/npm/v/svelte5-router.svg
-[npm-url]: https://npmjs.com/package/svelte5-router
-[changelog-url]: https://github.com/jpcutshall/svelte5-router/blob/master/CHANGELOG.md
