@@ -59,6 +59,5 @@
   },
   "peerDependencies": {
     "svelte": "^5.0.0"
-  },
-  "default": "./dist/index.js"
+  }
 }
