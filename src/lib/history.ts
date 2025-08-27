@@ -2,7 +2,7 @@
  * Adapted from https://github.com/reach/router/blob/b60e6dd781d5d3a4bdaaf4de665649c0f6a7e78d/src/lib/history.js
  * https://github.com/reach/router/blob/master/LICENSE
  */
-import { canUseDOM } from "./utils.ts"
+import { canUseDOM } from './utils.ts'
 
 export type HistoryListener = (event: {
   location: ReturnType<typeof getLocation>

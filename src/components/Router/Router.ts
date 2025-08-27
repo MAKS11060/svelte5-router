@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte'
-import type { RouteLocation } from "../Route/Route.ts"
-import type { globalHistory } from "../../lib/history.ts"
+import type { RouteLocation } from '../Route/Route.ts'
+import type { globalHistory } from '../../lib/history.ts'
 
 export type Viewtransition = {
   fn?: any

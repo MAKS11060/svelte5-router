@@ -1,8 +1,8 @@
 import { getContext } from 'svelte'
 import type { readable, writable } from 'svelte/store'
-import type { RouterContext } from "./RouterContext.ts"
-import type { globalHistory } from "./history.ts"
-import type { RouteLocation } from "../components/Route/Route.ts"
+import type { RouterContext } from './RouterContext.ts'
+import type { globalHistory } from './history.ts'
+import type { RouteLocation } from '../components/Route/Route.ts'
 
 export const LOCATION = {}
 export const ROUTER = {}

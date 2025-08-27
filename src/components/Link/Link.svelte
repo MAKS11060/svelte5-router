@@ -1,7 +1,7 @@
 <script lang="ts">
   import { useHistory, useLocation, useRouter } from '../../lib/contexts.ts'
   import { resolve, shouldNavigate } from '../../lib/utils.ts'
-  import type { LinkProps } from './Link'
+  import type { LinkProps } from './Link.ts'
 
   let {
     children,
@@ -11,6 +11,7 @@
     state = {},
     getProps = () => ({}),
     preserveScroll = false,
+    class: classVal,
     ...props
   }: LinkProps = $props()
 
@@ -60,11 +61,11 @@
 
 <a
   {href}
+  class={[classVal]}
   aria-current={isCurrent ? 'page' : undefined}
   data-active-link={isCurrent ? 'page' : isPartiallyCurrent ? 'step' : undefined}
   onclick={onClick}
   {...props}
 >
-  <!-- <slot active={!!ariaCurrent} /> -->
   {@render children(Boolean(isCurrent))}
 </a>
