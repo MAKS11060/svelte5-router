@@ -3,7 +3,7 @@
  * https://github.com/reach/router/blob/master/LICENSE
  */
 
-import type { RouteConfig } from '../types/RouterContext'
+import type { RouteConfig } from './RouterContext.ts'
 
 const PARAM = /^:(.+)/
 const SEGMENT_POINTS = 4

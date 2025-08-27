@@ -2,8 +2,12 @@
   "name": "@maks11060/svelte5-router",
   "version": "0.0.0",
   "lock": false,
-  "tasks": {},
-  "imports": {},
+  "tasks": {
+    "build": "svelte-package"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "fmt": {
     "exclude": [
       "dist",
@@ -20,12 +24,11 @@
   "unstable": [
     "fmt-component"
   ],
-  "nodeModulesDir": "manual",
+  "nodeModulesDir": "auto",
   "compilerOptions": {
     "lib": [
       "dom",
       "deno.ns",
-      "deno.unstable",
       "deno.window"
     ]
   }

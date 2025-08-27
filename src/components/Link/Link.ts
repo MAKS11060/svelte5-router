@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte'
 import type { HTMLAnchorAttributes } from 'svelte/elements'
-import type { RouteLocation } from '../Route/Route'
+import type { RouteLocation } from '../Route/Route.ts'
 
 export type LinkProps = {
   children: Snippet<[boolean]>

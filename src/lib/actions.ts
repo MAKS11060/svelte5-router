@@ -1,5 +1,5 @@
-import { navigate } from './history.js'
-import { hostMatches, shouldNavigate } from './utils.js'
+import { navigate } from "./history.ts"
+import { hostMatches, shouldNavigate } from "./utils.ts"
 
 /**
  * A link action that can be added to <a href=""> tags rather

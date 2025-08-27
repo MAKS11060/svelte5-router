@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { useHistory, useLocation, useRouter } from '../../lib/contexts.js'
-  import { resolve, shouldNavigate } from '../../lib/utils.js'
+  import { useHistory, useLocation, useRouter } from '../../lib/contexts.ts'
+  import { resolve, shouldNavigate } from '../../lib/utils.ts'
   import type { LinkProps } from './Link'
 
   let {

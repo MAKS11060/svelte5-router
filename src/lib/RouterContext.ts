@@ -1,4 +1,4 @@
-import { readable } from 'svelte/store'
+import type { readable } from 'svelte/store'
 
 export type RouteConfig = {
   _path?: string
