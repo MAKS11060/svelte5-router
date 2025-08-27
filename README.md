@@ -1,14 +1,17 @@
 # Svelte5 Router
 
-Forked from [svelte-routing](https://github.com/EmilTholin/svelte-routing)
+Forked from:
+
+- [svelte5-router](https://github.com/jpcutshall/svelte5-router)
+- [svelte-routing](https://github.com/EmilTholin/svelte-routing)
 
 A declarative Svelte routing library with SSR support.
 
 ## Install
 
 ```bash
-npm i -D maks11060/svelte5-router
-pnpm add maks11060/svelte5-router
+npm i -D @maks11060/svelte5-router
+pnpm add @maks11060/svelte5-router
 ```
 
 ## Usage
