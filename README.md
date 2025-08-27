@@ -41,12 +41,12 @@ pnpm add maks11060/svelte5-router
 
 ```javascript
 // main.js
-import App from "./App.svelte";
-import { mount } from "svelte";
+import App from './App.svelte'
+import { mount } from 'svelte'
 
 const app = mount(App, {
-  target: document.getElementById("app"),
-});
+  target: document.getElementById('app'),
+})
 ```
 
 ## Examples
@@ -89,18 +89,15 @@ const app = mount(App, {
 
 </details>
 
-
 ## API
 
 #### `Router`
 
-The `Router` component supplies the `Link` and `Route` descendant components
-with routing information through context, so you need at least one `Router` at
-the top of your application. It assigns a score to all its `Route` descendants
-and picks the best match to render.
+The `Router` component supplies the `Link` and `Route` descendant components with routing information through context,
+so you need at least one `Router` at the top of your application. It assigns a score to all its `Route` descendants and
+picks the best match to render.
 
-`Router` components can also be nested to allow for seamless merging of many
-smaller apps.
+`Router` components can also be nested to allow for seamless merging of many smaller apps.
 
 ###### Properties
 
@@ -126,18 +123,15 @@ A component used to navigate around the application.
 
 #### `Route`
 
-A component that will render its `component` property or children when its
-ancestor `Router` component decides it is the best match.
+A component that will render its `component` property or children when its ancestor `Router` component decides it is the
+best match.
 
-All properties other than `path` and `component` given to the `Route` will be
-passed to the rendered `component`.
+All properties other than `path` and `component` given to the `Route` will be passed to the rendered `component`.
 
-Potential path parameters will be passed to the rendered `component` as
-properties. A wildcard `*` can be given a name with `*wildcardName` to pass the
-wildcard string as the `wildcardName` property instead of as the `*` property.
+Potential path parameters will be passed to the rendered `component` as properties. A wildcard `*` can be given a name
+with `*wildcardName` to pass the wildcard string as the `wildcardName` property instead of as the `*` property.
 
-Potential path parameters are passed back to the parent using props, so they can
-be exposed to the children snippet.
+Potential path parameters are passed back to the parent using props, so they can be exposed to the children snippet.
 
 ```html
 <Route path="/blog/:id">
@@ -150,10 +144,10 @@ be exposed to the children snippet.
 The active status of link can be exposed to the children snippet.
 
 ```html
-<Link to="/browser">
-  {#snippet children(active)}
-    <MenuItem active={active}>Browser</MenuItem>
-  {/snippet}
+<link to="/browser">
+{#snippet children(active)}
+<menuitem active="{active}">Browser</menuitem>
+{/snippet}
 </Link>
 ```
 
@@ -167,22 +161,20 @@ The active status of link can be exposed to the children snippet.
 
 #### `navigate`
 
-A function that allows you to imperatively navigate around the application for
-those use cases where a `Link` component is not suitable, e.g. after submitting
-a form.
+A function that allows you to imperatively navigate around the application for those use cases where a `Link` component
+is not suitable, e.g. after submitting a form.
 
-The first argument is a string denoting where to navigate to, and the second
-argument is an object with a `replace`, `state` and `preserveScroll` properties equivalent to those
-in the `Link` component.
+The first argument is a string denoting where to navigate to, and the second argument is an object with a `replace`,
+`state` and `preserveScroll` properties equivalent to those in the `Link` component.
 
 ```html
 <script>
-  import { navigate } from "svelte5-router";
+  import { navigate } from 'svelte5-router'
 
   function onSubmit() {
     login().then(() => {
-      navigate("/success", { replace: true });
-    });
+      navigate('/success', {replace: true})
+    })
   }
 </script>
 ```
@@ -191,29 +183,31 @@ in the `Link` component.
 
 A function that allows you to listen to path changes made from `navigate`, `Link` and browser back button.
 
-The argument supplied must be a function that receives a Location object. Use the returned function to unsubscribe the listener.
+The argument supplied must be a function that receives a Location object. Use the returned function to unsubscribe the
+listener.
 
-This function is meant to be used outside a Svelte component. The alternative function is `useLocation`, `useRouter` and `useHistory` where it uses Svelte context to retrieve location, router or history object.
+This function is meant to be used outside a Svelte component. The alternative function is `useLocation`, `useRouter` and
+`useHistory` where it uses Svelte context to retrieve location, router or history object.
 
 ```js
-import { listen as addListener } from 'svelte5-router';
+import { listen as addListener } from 'svelte5-router'
 
 function init() {
-    addListener(({ location }) => {
-        console.log(location.pathname);
-    })
+  addListener(({location}) => {
+    console.log(location.pathname)
+  })
 }
 ```
 
 #### `link`
 
-An action used on anchor tags to navigate around the application. You can add an
-attribute `replace` to replace the current entry in the history stack instead of
-adding a new one and `preserveScroll` to not scroll the page to the top when clicked.
+An action used on anchor tags to navigate around the application. You can add an attribute `replace` to replace the
+current entry in the history stack instead of adding a new one and `preserveScroll` to not scroll the page to the top
+when clicked.
 
 ```html
 <script>
-  import { link } from "svelte5-router";
+  import { link } from 'svelte5-router'
 </script>
 
 <Router>
@@ -225,17 +219,15 @@ adding a new one and `preserveScroll` to not scroll the page to the top when cli
 
 #### `links`
 
-An action used on a root element to make all relative anchor elements navigate
-around the application. You can add an attribute `replace` on any anchor to
-replace the current entry in the history stack instead of adding a new one.
-You can add an attribute `preserveScroll` on any anchor to not to scroll the page to the top when clicked. You
-can add an attribute `noroute` for this action to skip over the anchor and allow
-it to use the native browser action.
+An action used on a root element to make all relative anchor elements navigate around the application. You can add an
+attribute `replace` on any anchor to replace the current entry in the history stack instead of adding a new one. You can
+add an attribute `preserveScroll` on any anchor to not to scroll the page to the top when clicked. You can add an
+attribute `noroute` for this action to skip over the anchor and allow it to use the native browser action.
 
 ```html
 <!-- App.svelte -->
 <script>
-  import { links } from "svelte5-router";
+  import { links } from 'svelte5-router'
 </script>
 
 <div use:links>
@@ -256,7 +248,7 @@ _`builtin transition`_
 
 ```html
 <script>
-  import { fade } from "svelte/transition";
+  import { fade } from 'svelte/transition'
   // ...
 </script>
 
@@ -270,7 +262,7 @@ _`custom transition`_
 
 ```html
 <script>
-  import { cubicin } from "svelte/easing";
+  import { cubicin } from 'svelte/easing'
   // ...
 </script>
 
@@ -288,6 +280,5 @@ This project is licensed under the [**MIT**](LICENSE).
 
 # Contribution
 
-Unless you explicitly state otherwise, any contribution intentionally submitted
-for this project by you, shall be licensed as **MIT**, without any additional
-terms or conditions. [**Code of Conduct**](CODE_OF_CONDUCT.md).
+Unless you explicitly state otherwise, any contribution intentionally submitted for this project by you, shall be
+licensed as **MIT**, without any additional terms or conditions. [**Code of Conduct**](CODE_OF_CONDUCT.md).

@@ -103,8 +103,7 @@
 # 1.8.8
 
 - Issue fixed [#242](https://github.com/EmilTholin/svelte-routing/issues/242).
-- PR removed [#77](https://github.com/EmilTholin/svelte-routing/pull/77)
-  Causing infinity loop in nested routes.
+- PR removed [#77](https://github.com/EmilTholin/svelte-routing/pull/77) Causing infinity loop in nested routes.
 
 # 1.8.7
 
@@ -139,8 +138,8 @@
 
 - Major Bugs fixed in `Router.svelte`.
 - Converted all interfaces into types.
-- Improved Lazy Loading/Async Route Import. Get much smaller chunk for every
-  route. Only load files (JS & CSS module) when URL is active.
+- Improved Lazy Loading/Async Route Import. Get much smaller chunk for every route. Only load files (JS & CSS module)
+  when URL is active.
 
 ```jsx
 <!-- App.svelte -->
@@ -156,8 +155,8 @@
 ```html
 <!-- Page.svelte -->
 <script>
-  import { useLocation } from "svelte-routing";
-  const location = useLocation();
+  import { useLocation } from 'svelte-routing'
+  const location = useLocation()
 </script>
 
 <div>{JSON.stringify($location)}</div>
@@ -180,8 +179,7 @@
 - PR merged [#95](https://github.com/EmilTholin/svelte-routing/pull/95).
 - PR merged [#85](https://github.com/EmilTholin/svelte-routing/pull/85).
 - PR merged [#77](https://github.com/EmilTholin/svelte-routing/pull/77).
-- PR/Issue [#200](https://github.com/EmilTholin/svelte-routing/pull/200),
-  Tested & it's not relevant/exists.
+- PR/Issue [#200](https://github.com/EmilTholin/svelte-routing/pull/200), Tested & it's not relevant/exists.
 - Issue fixed [#122](https://github.com/EmilTholin/svelte-routing/issues/122),
   [#4652](https://github.com/sveltejs/svelte/issues/4652).
 
@@ -191,8 +189,7 @@ Added TypeScript support.
 
 # 1.4.0
 
-Added functionality for passing the `location` to the rendered Route `component`
-and slot.
+Added functionality for passing the `location` to the rendered Route `component` and slot.
 
 ```html
 <!-- App.svelte -->
@@ -200,12 +197,12 @@ and slot.
 
 <!-- Blog.svelte -->
 <script>
-  import queryString from "query-string";
+  import queryString from 'query-string'
 
-  export let location;
+  export let location
 
-  let queryParams;
-  $: queryParams = queryString.parse(location.search);
+  let queryParams
+  $: queryParams = queryString.parse(location.search)
 </script>
 
 <h1>Blog</h1>
@@ -220,8 +217,8 @@ and slot.
 
 # 1.3.0
 
-Added functionality to pass potential `Route` path parameters back to the parent
-using props, so they can be exposed to the slot template using `let:params`.
+Added functionality to pass potential `Route` path parameters back to the parent using props, so they can be exposed to
+the slot template using `let:params`.
 
 ```html
 <Route path="/blog/:id" let:params>
@@ -231,8 +228,7 @@ using props, so they can be exposed to the slot template using `let:params`.
 
 # 1.2.0
 
-Added functionality for passing all the extra `Route` properties to the rendered
-`component`.
+Added functionality for passing all the extra `Route` properties to the rendered `component`.
 
 ```html
 <!-- App.svelte -->
@@ -240,8 +236,8 @@ Added functionality for passing all the extra `Route` properties to the rendered
 
 <!-- Page.svelte -->
 <script>
-  export let foo;
-  export let bar;
+  export let foo
+  export let bar
 </script>
 
 <h1>{foo} {bar}</h1>
@@ -257,7 +253,7 @@ Added the ability to give `Route` path wildcards a custom name.
 
 <!-- Page.svelte -->
 <script>
-  export let wildcardName;
+  export let wildcardName
 </script>
 
 <h1>{wildcardName}</h1>
@@ -266,36 +262,31 @@ Added the ability to give `Route` path wildcards a custom name.
 # 1.0.0
 
 - Moved to Svelte 3.
-- It's now required for all `Route` and `Link` components to have a `Router`
-  ancestor.
-- `NavLink` was removed in favour for a more versatile `Link` component. Check
-  the userland `NavLink` component in the `example` directory for an example.
+- It's now required for all `Route` and `Link` components to have a `Router` ancestor.
+- `NavLink` was removed in favour for a more versatile `Link` component. Check the userland `NavLink` component in the
+  `example` directory for an example.
 - The SSR component no longer needs to be compiled at runtime with the help of
-  [esm](https://github.com/standard-things/esm) as there is no longer a
-  dependency on the `history` library. You can compile a separate CJS bundle
-  for the server and pass in a prop to the topmost component and use that as
-  the `url` property for the `Router`, which will force the URL for all
-  descendants.
+  [esm](https://github.com/standard-things/esm) as there is no longer a dependency on the `history` library. You can
+  compile a separate CJS bundle for the server and pass in a prop to the topmost component and use that as the `url`
+  property for the `Router`, which will force the URL for all descendants.
 - All component filename extensions have been changed to `.svelte`.
 - Hash routing is no longer supported.
-- The entire API of the library is now exported from the `src/index.js` file,
-  so importing from the library is now much more pleasant.
+- The entire API of the library is now exported from the `src/index.js` file, so importing from the library is now much
+  more pleasant.
 
 ```javascript
-import { Router, Route, Link } from "svelte-routing";
+import { Link, Route, Router } from 'svelte-routing'
 ```
 
 # 0.4.0
 
-Moved to Svelte v2 and added the new
-[link](https://github.com/EmilTholin/svelte-routing#linkjs) and
+Moved to Svelte v2 and added the new [link](https://github.com/EmilTholin/svelte-routing#linkjs) and
 [links](https://github.com/EmilTholin/svelte-routing#linksjs) actions.
 
 # 0.3.0
 
-Split the `createHistory` function into `createBrowserHistory`,
-`createMemoryHistory`, `createHashHistory` to allow for better tree shaking of
-unused history creation code.
+Split the `createHistory` function into `createBrowserHistory`, `createMemoryHistory`, `createHashHistory` to allow for
+better tree shaking of unused history creation code.
 
 # 0.2.0
 
@@ -320,8 +311,7 @@ or:
 
 # 0.1.0
 
-Added the ability to give a component constructor to a route with the
-`component` property:
+Added the ability to give a component constructor to a route with the `component` property:
 
 ```html
 <!-- App.html -->

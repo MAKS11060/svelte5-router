@@ -1,26 +1,26 @@
-import {svelte} from "@sveltejs/vite-plugin-svelte"
-import {defineConfig} from "vite"
+import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   //root: "tests",
   plugins: [svelte()],
   build: {
     lib: {
-      entry: "./src/index.ts",
-      name: "svelte5-router",
-      fileName: "index",
-      formats: ["es"],
+      entry: './src/index.ts',
+      name: 'svelte5-router',
+      fileName: 'index',
+      formats: ['es'],
     },
     rollupOptions: {
-      external: ["svelte"],
+      external: ['svelte'],
       output: {
-        dir: "dist",
-        format: "es",
+        dir: 'dist',
+        format: 'es',
       },
     },
-    outDir: "dist",
+    outDir: 'dist',
   },
   resolve: {
-    conditions: ["browser"],
+    conditions: ['browser'],
   },
-});
+})

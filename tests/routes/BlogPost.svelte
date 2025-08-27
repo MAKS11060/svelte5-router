@@ -1,20 +1,20 @@
 <script lang="ts">
-  import blogposts from "../blogposts.json";
-  import { Link } from "svelte5-router";
+  import blogposts from '../blogposts.json'
+  import { Link } from 'svelte5-router'
 
   interface Props {
-    id: string;
+    id: string
   }
-  let { id }: Props = $props();
+  let {id}: Props = $props()
 
   $effect(() => {
-    console.log(typeof id);
-  });
+    console.log(typeof id)
+  })
 
-  let text = $derived(blogposts[id as keyof typeof blogposts] ?? "Not Found");
+  let text = $derived(blogposts[id as keyof typeof blogposts] ?? 'Not Found')
   let nextLink = $derived(
-    !Number.isNaN(parseInt(id)) ? `/blog/${parseInt(id) + 1}` : null
-  );
+    !Number.isNaN(parseInt(id)) ? `/blog/${parseInt(id) + 1}` : null,
+  )
 </script>
 
 <div class="container">

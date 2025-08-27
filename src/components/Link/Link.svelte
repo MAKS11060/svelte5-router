@@ -1,40 +1,40 @@
 <script lang="ts">
-  import {useHistory, useLocation, useRouter} from "../../lib/contexts.js";
-  import {resolve, shouldNavigate} from "../../lib/utils.js";
-  import type {LinkProps} from "./Link";
+  import { useHistory, useLocation, useRouter } from '../../lib/contexts.js'
+  import { resolve, shouldNavigate } from '../../lib/utils.js'
+  import type { LinkProps } from './Link'
 
   let {
     children,
     click,
-    to = "",
+    to = '',
     replace = false,
     state = {},
     getProps = () => ({}),
     preserveScroll = false,
     ...props
-  }: LinkProps = $props();
+  }: LinkProps = $props()
 
-  const location = useLocation();
-  const { base } = useRouter();
-  const { navigate } = useHistory();
+  const location = useLocation()
+  const {base} = useRouter()
+  const {navigate} = useHistory()
 
-  let href = $derived(resolve(to, $base.uri));
-  let isCurrent = $derived(href === $location.pathname);
+  let href = $derived(resolve(to, $base.uri))
+  let isCurrent = $derived(href === $location.pathname)
   let isPartiallyCurrent = $derived.by(() => {
-    const pathSegments = $location.pathname.split("/").filter(Boolean);
-    const hrefSegments = href.split("/").filter(Boolean);
+    const pathSegments = $location.pathname.split('/').filter(Boolean)
+    const hrefSegments = href.split('/').filter(Boolean)
 
     if (hrefSegments.length < 1) return false
-    if (pathSegments.length <= hrefSegments.length) return false;
+    if (pathSegments.length <= hrefSegments.length) return false
 
     for (let i = 0; i < hrefSegments.length; i++) {
       if (hrefSegments[i] !== pathSegments[i]) {
-        return false;
+        return false
       }
     }
 
-    return true;
-  });
+    return true
+  })
 
   // let properties = $derived(
   //   getProps({
@@ -44,24 +44,24 @@
   //     isCurrent,
   //     // existingProps: props,
   //   })
-  // );
+  // )
 
   const onClick = (event: MouseEvent) => {
-    click?.(event);
+    click?.(event)
     if (shouldNavigate(event)) {
-      event.preventDefault();
+      event.preventDefault()
       // Don't push another entry to the history stack when the user
       // clicks on a Link to the page they are currently on.
-      const shouldReplace = $location.pathname === href || replace;
-      navigate(href, { state, replace: shouldReplace, preserveScroll });
+      const shouldReplace = $location.pathname === href || replace
+      navigate(href, {state, replace: shouldReplace, preserveScroll})
     }
-  };
+  }
 </script>
 
 <a
   {href}
-  aria-current={isCurrent ? "page" : undefined}
-  data-active-link={isCurrent ? "page" : isPartiallyCurrent ? "step" : undefined}
+  aria-current={isCurrent ? 'page' : undefined}
+  data-active-link={isCurrent ? 'page' : isPartiallyCurrent ? 'step' : undefined}
   onclick={onClick}
   {...props}
 >

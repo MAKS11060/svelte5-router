@@ -15,7 +15,7 @@
     "declarationMap": true,
     "declarationDir": "./dist",
     "esModuleInterop": true,
-    "outDir": "./dist",
+    "outDir": "./dist"
     // "rootDir": "./src"
   },
   // "include": [

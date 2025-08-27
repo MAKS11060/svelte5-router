@@ -1,5 +1,5 @@
-import { navigate } from "./history.js";
-import { hostMatches, shouldNavigate } from "./utils.js";
+import { navigate } from './history.js'
+import { hostMatches, shouldNavigate } from './utils.js'
 
 /**
  * A link action that can be added to <a href=""> tags rather
@@ -12,30 +12,30 @@ import { hostMatches, shouldNavigate } from "./utils.js";
  */
 export const link = (node: HTMLElement) => {
   const onClick = (event: MouseEvent) => {
-    const anchor = event.currentTarget;
+    const anchor = event.currentTarget
     if (anchor instanceof HTMLAnchorElement) {
       if (
-        (anchor.target === "" || anchor.target === "_self") &&
+        (anchor.target === '' || anchor.target === '_self') &&
         hostMatches(anchor) &&
         shouldNavigate(event)
       ) {
-        event.preventDefault();
+        event.preventDefault()
         navigate(anchor.pathname + anchor.search, {
-          replace: anchor.hasAttribute("replace"),
-          preserveScroll: anchor.hasAttribute("preserveScroll"),
-        });
+          replace: anchor.hasAttribute('replace'),
+          preserveScroll: anchor.hasAttribute('preserveScroll'),
+        })
       }
     }
-  };
+  }
 
-  node.addEventListener("click", onClick);
+  node.addEventListener('click', onClick)
 
   return {
     destroy() {
-      node.removeEventListener("click", onClick);
+      node.removeEventListener('click', onClick)
     },
-  };
-};
+  }
+}
 /**
  * An action to be added at a root element of your application to
  * capture all relative links and push them onto the history stack.
@@ -55,37 +55,38 @@ export const link = (node: HTMLElement) => {
  */
 export const links = (node: HTMLElement) => {
   const findClosest = (tagName: string, el: HTMLElement) => {
-    while (el && el.tagName !== tagName && el.parentElement)
-      el = el.parentElement;
-    return el;
-  };
+    while (el && el.tagName !== tagName && el.parentElement) {
+      el = el.parentElement
+    }
+    return el
+  }
 
   const onClick = (event: MouseEvent) => {
     if (event.target instanceof HTMLElement) {
-      const anchor = findClosest("A", event.target);
+      const anchor = findClosest('A', event.target)
       if (anchor instanceof HTMLAnchorElement) {
         if (
           anchor &&
-          (anchor.target === "" || anchor.target === "_self") &&
+          (anchor.target === '' || anchor.target === '_self') &&
           hostMatches(anchor) &&
           shouldNavigate(event) &&
-          !anchor.hasAttribute("noroute")
+          !anchor.hasAttribute('noroute')
         ) {
-          event.preventDefault();
+          event.preventDefault()
           navigate(anchor.pathname + anchor.search, {
-            replace: anchor.hasAttribute("replace"),
-            preserveScroll: anchor.hasAttribute("preserveScroll"),
-          });
+            replace: anchor.hasAttribute('replace'),
+            preserveScroll: anchor.hasAttribute('preserveScroll'),
+          })
         }
       }
     }
-  };
+  }
 
-  node.addEventListener("click", onClick);
+  node.addEventListener('click', onClick)
 
   return {
     destroy() {
-      node.removeEventListener("click", onClick);
+      node.removeEventListener('click', onClick)
     },
-  };
-};
+  }
+}

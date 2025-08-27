@@ -1,0 +1,32 @@
+{
+  "name": "@maks11060/svelte5-router",
+  "version": "0.0.0",
+  "lock": false,
+  "tasks": {},
+  "imports": {},
+  "fmt": {
+    "exclude": [
+      "dist",
+      "public",
+      "node_modules"
+    ],
+    "lineWidth": 120,
+    "newLineKind": "system",
+    "quoteProps": "asNeeded",
+    "semiColons": false,
+    "singleQuote": true,
+    "spaceSurroundingProperties": false
+  },
+  "unstable": [
+    "fmt-component"
+  ],
+  "nodeModulesDir": "manual",
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "deno.ns",
+      "deno.unstable",
+      "deno.window"
+    ]
+  }
+}
