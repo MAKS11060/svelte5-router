@@ -3,7 +3,6 @@
   "name": "@maks11060/svelte5-router",
   "version": "3.1.0",
   "description": "A declarative Svelte routing library with SSR support",
-  "private": "false",
   "keywords": [
     "svelte routing",
     "svelte",
