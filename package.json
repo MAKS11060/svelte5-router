@@ -32,9 +32,7 @@
     }
   },
   "scripts": {
-    "build": "svelte-package",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "test": "vite -c vite.config.ts --force tests/"
+    "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "repository": {
     "type": "git",
