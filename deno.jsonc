@@ -4,7 +4,8 @@
   "lock": false,
   "tasks": {
     "test": "vite -c vite.config.ts --force tests/",
-    "build": "svelte-package && ./scripts/post-build.ts"
+    "build": "svelte-package && ./scripts/post-build.ts",
+    "publish": "npm publish"
   },
   "exports": {
     // ".": "./dist/index.js"
