@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "@maks11060/svelte5-router",
   "version": "3.1.0",
   "description": "A declarative Svelte routing library with SSR support",
@@ -14,17 +15,15 @@
     "svelte router",
     "typescript"
   ],
+  "author": "MAKS11060",
   "homepage": "https://github.com/maks11060/svelte5-router",
   "bugs": {
     "url": "https://github.com/maks11060/svelte5-router/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/maks11060/svelte5-router.git"
-  },
   "license": "MIT",
-  "author": "MAKS11060",
-  "type": "module",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -32,13 +31,14 @@
       "default": "./dist/index.js"
     }
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "svelte-package",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "test": "vite -c vite.config.ts --force tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maks11060/svelte5-router.git"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "6.1.0",
