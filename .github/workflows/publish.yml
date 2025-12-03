@@ -30,7 +30,7 @@ jobs:
           cache: true
 
       - name: install
-        run: deno install
+        run: deno install -q
 
       - name: Build
         run: deno task build
