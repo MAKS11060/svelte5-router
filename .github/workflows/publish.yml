@@ -1,0 +1,37 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [ci]
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - name: Build
+        run: deno task build
+
+      - name: Publish
+        run: deno task publish
+
+      # - name: Release
+      #   uses: softprops/action-gh-release@v2
+      #   with:
+      #     tag_name: ${{ env.FINAL_TAG }}
+      #     generate_release_notes: true
