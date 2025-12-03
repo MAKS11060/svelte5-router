@@ -7,7 +7,7 @@ for (const {path} of expandGlobSync('./{dist,.svelte-kit}/**/*.{js,d.ts,svelte}'
   const content = Deno.readTextFileSync(path)
 
   // replace .ts to .js
-  const updated = content.replace(/from\s+['"]([^'"]+)\.ts['"]/g, (match, p1) => {
+  const updated = content.replace(/from\s+['"]([^'"]+)\.ts['"]/g, (_, p1) => {
     return `from '${p1}.js'`
   })
 
