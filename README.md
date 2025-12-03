@@ -45,7 +45,7 @@ pnpm add @maks11060/svelte5-router
 ```javascript
 // main.js
 import App from './App.svelte'
-import { mount } from 'svelte'
+import {mount} from 'svelte'
 
 const app = mount(App, {
   target: document.getElementById('app'),
@@ -172,7 +172,7 @@ The first argument is a string denoting where to navigate to, and the second arg
 
 ```html
 <script>
-  import { navigate } from 'svelte5-router'
+  import {navigate} from '@maks11060/svelte5-router'
 
   function onSubmit() {
     login().then(() => {
@@ -193,7 +193,7 @@ This function is meant to be used outside a Svelte component. The alternative fu
 `useHistory` where it uses Svelte context to retrieve location, router or history object.
 
 ```js
-import { listen as addListener } from 'svelte5-router'
+import {listen as addListener} from '@maks11060/svelte5-router'
 
 function init() {
   addListener(({location}) => {
@@ -210,7 +210,7 @@ when clicked.
 
 ```html
 <script>
-  import { link } from 'svelte5-router'
+  import {link} from '@maks11060/svelte5-router'
 </script>
 
 <Router>
@@ -230,7 +230,7 @@ attribute `noroute` for this action to skip over the anchor and allow it to use 
 ```html
 <!-- App.svelte -->
 <script>
-  import { links } from 'svelte5-router'
+  import {links} from '@maks11060/svelte5-router'
 </script>
 
 <div use:links>
@@ -251,7 +251,7 @@ _`builtin transition`_
 
 ```html
 <script>
-  import { fade } from 'svelte/transition'
+  import {fade} from 'svelte/transition'
   // ...
 </script>
 
@@ -265,7 +265,7 @@ _`custom transition`_
 
 ```html
 <script>
-  import { cubicin } from 'svelte/easing'
+  import {cubicin} from 'svelte/easing'
   // ...
 </script>
 

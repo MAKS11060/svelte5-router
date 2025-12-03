@@ -1,5 +1,5 @@
-import { svelte } from '@sveltejs/vite-plugin-svelte'
-import { defineConfig } from 'vite'
+import {svelte} from '@sveltejs/vite-plugin-svelte'
+import {defineConfig} from 'vite'
 
 export default defineConfig({
   //root: "tests",
@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: './src/index.ts',
-      name: 'svelte5-router',
+      name: '@maks11060/svelte5-router',
       fileName: 'index',
       formats: ['es'],
     },

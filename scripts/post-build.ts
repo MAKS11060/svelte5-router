@@ -1,6 +1,6 @@
 #!/usr/bin/env -S deno run -A
 
-import { expandGlobSync } from 'jsr:@std/fs/expand-glob'
+import {expandGlobSync} from '@std/fs/expand-glob'
 
 for (const {path} of expandGlobSync('./{dist,.svelte-kit}/**/*.{js,d.ts,svelte}')) {
   const content = Deno.readTextFileSync(path)

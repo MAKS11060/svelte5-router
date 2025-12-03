@@ -1,5 +1,5 @@
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 import adapter from '@sveltejs/adapter-auto'
+import {vitePreprocess} from '@sveltejs/vite-plugin-svelte'
 
 // this is not used for transpiling but is used by VScode for the Svelte language server
 export default {
@@ -9,5 +9,7 @@ export default {
       lib: 'src',
     },
   },
-  preprocess: vitePreprocess(),
+  preprocess: vitePreprocess({
+    script: true,
+  }),
 }

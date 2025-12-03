@@ -3,12 +3,15 @@
   "version": "0.0.0",
   "lock": false,
   "tasks": {
+    "ok": "deno fmt --check && deno task build",
     "test": "vite -c vite.config.ts --force tests/",
     "build": "svelte-package && ./scripts/post-build.ts",
     "publish": "npm publish"
   },
+  "imports": {
+    "@std/fs": "jsr:@std/fs@^1.0.20"
+  },
   "exports": {
-    // ".": "./dist/index.js"
     ".": "./src/index.ts"
   },
   "fmt": {

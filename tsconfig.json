@@ -27,6 +27,11 @@
   //   "src/**/*.svelte",
   //   "tests/**/*.{js,ts,svelte}"
   // ],
+  "exclude": [
+    ".svelte-kit",
+    "dist",
+    "node_modules"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

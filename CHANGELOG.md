@@ -155,7 +155,7 @@
 ```html
 <!-- Page.svelte -->
 <script>
-  import { useLocation } from 'svelte-routing'
+  import {useLocation} from 'svelte-routing'
   const location = useLocation()
 </script>
 
@@ -275,7 +275,7 @@ Added the ability to give `Route` path wildcards a custom name.
   more pleasant.
 
 ```javascript
-import { Link, Route, Router } from 'svelte-routing'
+import {Link, Route, Router} from 'svelte-routing'
 ```
 
 # 0.4.0
