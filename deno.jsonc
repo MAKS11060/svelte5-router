@@ -6,11 +6,10 @@
     "ok": "deno fmt --check && deno task build",
     "test": "vite -c vite.config.ts --force tests/",
     "build": "svelte-package && ./scripts/post-build.ts",
-    "publish": "deno -A npm publish"
+    "publish": "npm publish"
   },
   "imports": {
-    "@std/fs": "jsr:@std/fs@^1.0.20",
-    "npm": "npm:npm@^11.6.4"
+    "@std/fs": "jsr:@std/fs@^1.0.20"
   },
   "exports": {
     ".": "./src/index.ts"
