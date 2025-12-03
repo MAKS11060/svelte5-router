@@ -24,6 +24,9 @@ jobs:
         with:
           cache: true
 
+      - name: install
+        run: deno install
+
       - name: Build
         run: deno task build
 
