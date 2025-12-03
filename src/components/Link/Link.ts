@@ -11,7 +11,9 @@ export type LinkProps = {
 
   replace?: boolean
   preserveScroll?: boolean
-  state?: { [k in string | number]: unknown }
+  state?: {
+    [k in string | number]: unknown
+  }
 } & Omit<HTMLAnchorAttributes, 'href' | 'children'>
 
 export type GetPropsParams = {

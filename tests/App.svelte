@@ -1,7 +1,7 @@
 <!-- App.svelte -->
 <script lang="ts">
-  // import {dynamic, Link, Route, Router} from '@maks11060/svelte5-router'
-  import {dynamic, Link, Route, Router} from '../src/index.ts'
+  import {dynamic, Link, Route, Router} from '@maks11060/svelte5-router'
+  // import {dynamic, Link, Route, Router} from '../src/index.ts'
 
   import About from './routes/About.svelte'
   import Blog from './routes/Blog.svelte'

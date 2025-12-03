@@ -2,6 +2,7 @@
 
 import {expandGlobSync} from '@std/fs/expand-glob'
 
+console.group(`✅ Fix imports:`)
 for (const {path} of expandGlobSync('./{dist,.svelte-kit}/**/*.{js,d.ts,svelte}')) {
   const content = Deno.readTextFileSync(path)
 
@@ -12,6 +13,8 @@ for (const {path} of expandGlobSync('./{dist,.svelte-kit}/**/*.{js,d.ts,svelte}'
 
   if (updated !== content) {
     Deno.writeTextFileSync(path, updated)
-    console.log(`✅ Fixed imports in ${path}`)
+    // console.log(`✅ Fixed imports in ${path}`)
+    console.log(`${path}`)
   }
 }
+console.groupEnd()

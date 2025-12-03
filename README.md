@@ -16,22 +16,22 @@ pnpm add @maks11060/svelte5-router
 
 ## Usage
 
-```html
+```svelte
 <!-- App.svelte -->
 <script>
-  import { Router, Link, Route } from "svelte5-router";
-  import Home from "./routes/Home.svelte";
-  import About from "./routes/About.svelte";
-  import Blog from "./routes/Blog.svelte";
+  import { Router, Link, Route } from "svelte5-router"
+  import Home from "./routes/Home.svelte"
+  import About from "./routes/About.svelte"
+  import Blog from "./routes/Blog.svelte"
 
-  export let url = $state("");
+  export let url = $state("")
 </script>
 
 <Router {url}>
   <nav>
-    <Link to="/">Home</Link>
-    <Link to="/about">About</Link>
-    <Link to="/blog">Blog</Link>
+    <link href="/">Home</Link>
+    <link href="/about">About</Link>
+    <link href="/blog">Blog</Link>
   </nav>
   <div>
     <Route path="/blog/:id" component={BlogPost} />
@@ -47,9 +47,7 @@ pnpm add @maks11060/svelte5-router
 import App from './App.svelte'
 import {mount} from 'svelte'
 
-const app = mount(App, {
-  target: document.getElementById('app'),
-})
+const app = mount(App, {target: document.body})
 ```
 
 ## Examples
@@ -57,15 +55,15 @@ const app = mount(App, {
 <details>
 <summary>Load async component</summary>
 
-```html
+```svelte
 <script>
-  import { Link, Route, Router, dynamic } from "svelte5-router";
-  import Blog from "./routes/Blog.svelte";
-  import Home from "./routes/Home.svelte";
+  import {dynamic, Link, Route, Router} from 'svelte5-router'
+  import Blog from './routes/Blog.svelte'
+  import Home from './routes/Home.svelte'
 
-  const Blog = dynamic(import("./routes/Blog.svelte"));
+  const Blog = dynamic(import('./routes/Blog.svelte'))
 
-  let url = $state("");
+  let url = $state('')
 </script>
 
 <Router {url}>
@@ -107,7 +105,7 @@ picks the best match to render.
 |     Property     | Required | Default Value | Description                                                                                                                                                                                                                                                                                                 |
 | :--------------: | :------: | :-----------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |    `basepath`    |          |     `"/"`     | The `basepath` property will be added to all the `to` properties of `Link` descendants and to all `path` properties of `Route` descendants. This property can be ignored in most cases, but if you host your application on e.g. `https://example.com/my-site`, the `basepath` should be set to `/my-site`. |
-|      `url`       |          |     `""`      | The `url` property is used in SSR to force the current URL of the application and will be used by all `Link` and `Route` descendants. A falsy value will be ignored by the `Router`, so it's enough to declare `let url = $state("");` for your topmost component and only give it a value in SSR.          |
+|      `url`       |          |     `""`      | The `url` property is used in SSR to force the current URL of the application and will be used by all `Link` and `Route` descendants. A falsy value will be ignored by the `Router`, so it's enough to declare `let url = $state("")` for your topmost component and only give it a value in SSR.          |
 | `viewtransition` |          |    `null`     | View Transition (Experimental)                                                                                                                                                                                                                                                                              |
 
 #### `Link`
@@ -116,13 +114,12 @@ A component used to navigate around the application.
 
 ###### Properties
 
-|     Property     | Required | Default Value | Description                                                                                                                                                                                                                           |
-| :--------------: | :------: | :-----------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-|       `to`       |    ✔ ️    |     `"#"`     | URL the component should link to.                                                                                                                                                                                                     |
-|    `replace`     |          |    `false`    | When `true`, clicking the `Link` will replace the current entry in the history stack instead of adding a new one.                                                                                                                     |
-|     `state`      |          |     `{}`      | An object that will be pushed to the history stack when the `Link` is clicked.                                                                                                                                                        |
-|  ~~`getProps`~~  |          | `() => ({})`  | A function that returns an object that will be spread on the underlying anchor element's attributes. The first argument given to the function is an object with the properties `location`, `href`, `isPartiallyCurrent`, `isCurrent`. |
-| `preserveScroll` |          |    `false`    | When `true`, clicking the `Link` will not scroll the page to the top.                                                                                                                                                                 |
+|     Property     | Required | Default Value | Description                                                                                                       |
+| :--------------: | :------: | :-----------: | :---------------------------------------------------------------------------------------------------------------- |
+|      `href`      |    ✔ ️    |     `"#"`     | URL the component should link to.                                                                                 |
+|    `replace`     |          |    `false`    | When `true`, clicking the `Link` will replace the current entry in the history stack instead of adding a new one. |
+|     `state`      |          |     `{}`      | An object that will be pushed to the history stack when the `Link` is clicked.                                    |
+| `preserveScroll` |          |    `false`    | When `true`, clicking the `Link` will not scroll the page to the top.                                             |
 
 #### `Route`
 
@@ -136,20 +133,20 @@ with `*wildcardName` to pass the wildcard string as the `wildcardName` property 
 
 Potential path parameters are passed back to the parent using props, so they can be exposed to the children snippet.
 
-```html
+```svelte
 <Route path="/blog/:id">
   {#snippet children(params)}
-  <BlogPost id="{params.id}" />
+    <BlogPost id={params.id} />
   {/snippet}
 </Route>
 ```
 
 The active status of link can be exposed to the children snippet.
 
-```html
-<link to="/browser">
+```svelte
+<link href="/browser">
 {#snippet children(active)}
-<menuitem active="{active}">Browser</menuitem>
+  <menuitem {active}>Browser</menuitem>
 {/snippet}
 </Link>
 ```
@@ -170,7 +167,7 @@ is not suitable, e.g. after submitting a form.
 The first argument is a string denoting where to navigate to, and the second argument is an object with a `replace`,
 `state` and `preserveScroll` properties equivalent to those in the `Link` component.
 
-```html
+```svelte
 <script>
   import {navigate} from '@maks11060/svelte5-router'
 
@@ -208,7 +205,7 @@ An action used on anchor tags to navigate around the application. You can add an
 current entry in the history stack instead of adding a new one and `preserveScroll` to not scroll the page to the top
 when clicked.
 
-```html
+```svelte
 <script>
   import {link} from '@maks11060/svelte5-router'
 </script>
@@ -227,7 +224,7 @@ attribute `replace` on any anchor to replace the current entry in the history st
 add an attribute `preserveScroll` on any anchor to not to scroll the page to the top when clicked. You can add an
 attribute `noroute` for this action to skip over the anchor and allow it to use the native browser action.
 
-```html
+```svelte
 <!-- App.svelte -->
 <script>
   import {links} from '@maks11060/svelte5-router'
@@ -249,21 +246,21 @@ Viewtransition for navigation (Experimental).
 
 _`builtin transition`_
 
-```html
+```svelte
 <script>
   import {fade} from 'svelte/transition'
   // ...
 </script>
 
 <Router viewtransition="{() => { fn: fade, duration: 500 }}">
-  <Route path="/" component="{Home}" />
-  <Route path="/contact" component="{Contact}" />
+  <Route path="/" component={Home} />
+  <Route path="/contact" component={Contact} />
 </Router>
 ```
 
 _`custom transition`_
 
-```html
+```svelte
 <script>
   import {cubicin} from 'svelte/easing'
   // ...
@@ -272,8 +269,8 @@ _`custom transition`_
 <Router
   viewtransition="{() => { duration: 500, easing: cubicin, css: (t) => `scale:${t};transform-origin:center center;` }}"
 >
-  <Route path="/" component="{Home}" />
-  <Route path="/contact" component="{Contact}" />
+  <Route path="/" component={Home} />
+  <Route path="/contact" component={Contact} />
 </Router>
 ```
 
