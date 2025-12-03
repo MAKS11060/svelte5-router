@@ -1,6 +1,6 @@
-import type { Snippet } from 'svelte'
-import type { RouteLocation } from '../Route/Route.ts'
-import type { globalHistory } from '../../lib/history.ts'
+import type {Snippet} from 'svelte'
+import type {globalHistory} from '../../lib/history.ts'
+import type {RouteLocation} from '../Route/Route.ts'
 
 export type Viewtransition = {
   fn?: any
@@ -14,9 +14,9 @@ export type Viewtransition = {
 }
 
 export type RouterProps = {
+  children: Snippet<[activeRoute: string | null, routeLocation: RouteLocation]>
   basepath?: string
   url?: string
   viewtransition?: (direction?: string) => Viewtransition
   history?: typeof globalHistory
-  children: Snippet<[string | null, RouteLocation]>
 }

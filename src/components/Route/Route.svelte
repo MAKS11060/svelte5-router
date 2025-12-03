@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { onDestroy, onMount } from 'svelte'
-  import { useRouter } from '../../lib/contexts.js'
-  import { canUseDOM } from '../../lib/utils.js'
-  import { isAsync, type RouteParams, type RouteProps } from './Route.js'
+  import {onDestroy, onMount} from 'svelte'
+  import {useRouter} from '../../lib/contexts.js'
+  import {canUseDOM} from '../../lib/utils.js'
+  import {isAsync, type RouteParams, type RouteProps} from './Route.js'
 
   let {path = '', component, children, ...rest}: RouteProps = $props()
 

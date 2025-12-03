@@ -1,6 +1,8 @@
 <!-- App.svelte -->
-<script>
-  import { dynamic, Link, Route, Router } from 'svelte5-router'
+<script lang="ts">
+  // import {dynamic, Link, Route, Router} from '@maks11060/svelte5-router'
+  import {dynamic, Link, Route, Router} from '../src/index.ts'
+
   import About from './routes/About.svelte'
   import Blog from './routes/Blog.svelte'
   import Home from './routes/Home.svelte'
@@ -12,11 +14,10 @@
 
 <Router {url}>
   <nav>
-    <Link class="link" to="/">Home</Link>
-    <Link class="link" to="/about">About</Link>
-    <Link class="link" to="/blog">Blog</Link>
-
-    <Link class="link" to="/profile">Profile</Link>
+    <Link class="link" href="/">Home</Link>
+    <Link class="link" href="/about">About</Link>
+    <Link class="link" href="/blog">Blog</Link>
+    <Link class="link" href="/profile">Profile</Link>
   </nav>
   <div>
     <Route path="/blog/:id" component={BlogPost} />
@@ -31,8 +32,8 @@
         <!-- Profile router -->
         <Router>
           <div>
-            <Link class="link" to="posts">Posts</Link>
-            <Link class="link" to="settings">Settings</Link>
+            <Link class="link" href="posts">Posts</Link>
+            <Link class="link" href="settings">Settings</Link>
           </div>
 
           <div>
@@ -43,9 +44,9 @@
               <!-- profiles/settings router -->
               <Router>
                 <div>
-                  <Link class="link" to="profile">Public profile</Link>
-                  <Link class="link" to="account">Account</Link>
-                  <Link class="link" to="appearance">Appearance</Link>
+                  <Link class="link" href="profile">Public profile</Link>
+                  <Link class="link" href="account">Account</Link>
+                  <Link class="link" href="appearance">Appearance</Link>
                 </div>
 
                 <div>

@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { getContext, onMount, setContext } from 'svelte'
-  import { derived, writable } from 'svelte/store'
-  import { HISTORY, LOCATION, ROUTER, useInternalLocation, useRouter } from '../../lib/contexts.ts'
-  import { globalHistory } from '../../lib/history.ts'
-  import { combinePaths, pick } from '../../lib/utils.ts'
-  import type { RouteConfig } from '../../lib/RouterContext.ts'
-  import type { RouteLocation } from '../Route/Route.ts'
-  import type { RouterProps, Viewtransition } from './Router.ts'
+  import {getContext, onMount, setContext} from 'svelte'
+  import {derived, writable} from 'svelte/store'
+  import {HISTORY, LOCATION, ROUTER, useInternalLocation, useRouter} from '../../lib/contexts.ts'
+  import {globalHistory} from '../../lib/history.ts'
+  import {combinePaths, pick} from '../../lib/utils.ts'
+  import type {RouteConfig} from '../../lib/RouterContext.ts'
+  import type {RouteLocation} from '../Route/Route.ts'
+  import type {RouterProps, Viewtransition} from './Router.ts'
 
   let {
     basepath = '/',

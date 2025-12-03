@@ -1,4 +1,4 @@
-import type { Component, Snippet } from 'svelte'
+import type {Component, Snippet} from 'svelte'
 
 export type AsyncComponent = () => Promise<{
   default: Component<any, Record<string, unknown>>

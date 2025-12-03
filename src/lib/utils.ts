@@ -3,7 +3,7 @@
  * https://github.com/reach/router/blob/master/LICENSE
  */
 
-import type { RouteConfig } from './RouterContext.ts'
+import type {RouteConfig} from './RouterContext.ts'
 
 const PARAM = /^:(.+)/
 const SEGMENT_POINTS = 4
@@ -240,4 +240,4 @@ const hostMatches = (anchor: HTMLAnchorElement) => {
 
 const canUseDOM = () => typeof window !== 'undefined' && 'document' in window && 'location' in window
 
-export { canUseDOM, combinePaths, hostMatches, pick, resolve, shouldNavigate, stripSlashes }
+export {canUseDOM, combinePaths, hostMatches, pick, resolve, shouldNavigate, stripSlashes}

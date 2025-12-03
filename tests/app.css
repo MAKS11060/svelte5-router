@@ -17,11 +17,14 @@ html {
 }
 
 .container {
-  margin: 1rem;
+  margin: 2rem;
 }
 
 /* Link */
 :root {
+  --link-bg: #ddd;
+  --link-color: #000;
+
   --link-bg-active-page: #605dff;
   --link-color-active-page: #fff;
 
@@ -29,13 +32,27 @@ html {
   --link-color-active-step: #fff;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --link-bg: #333;
+    --link-color: #fff;
+
+    --link-bg-active-page: #605dff;
+    --link-color-active-page: #fff;
+
+    --link-bg-active-step: #f43098;
+    --link-color-active-step: #fff;
+  }
+}
+
 .link {
   padding: 0.5rem;
-  color: black;
+  background-color: var(--link-bg);
+  color: var(--link-color-content);
 }
 
 .link:hover {
-  background: #0004;
+  opacity: 0.9;
 }
 
 .link[data-active-link='page'] {

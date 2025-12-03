@@ -1,6 +1,6 @@
 <script lang="ts">
+  import {Link} from '@maks11060/svelte5-router'
   import blogposts from '../blogposts.json'
-  import { Link } from 'svelte5-router'
 
   interface Props {
     id: string
