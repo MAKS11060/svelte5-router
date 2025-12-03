@@ -30,6 +30,13 @@ jobs:
       - name: Build
         run: deno task build
 
+      - name: Debug npm & OIDC
+        run: |
+          npm --version
+          deno -A npm -v
+          echo "NPM_CONFIG_REGISTRY: $NPM_CONFIG_REGISTRY"
+          echo "NODE_AUTH_TOKEN set? $([[ -n \"\$NODE_AUTH_TOKEN\" ]] && echo yes || echo no)"
+
       - name: Publish
         run: deno task publish
 
