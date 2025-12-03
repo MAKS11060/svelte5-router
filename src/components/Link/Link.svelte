@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { useHistory, useLocation, useRouter } from '../../lib/contexts.ts'
-  import { resolve, shouldNavigate } from '../../lib/utils.ts'
-  import type { LinkProps } from './Link.ts'
+  import {useHistory, useLocation, useRouter} from '../../lib/contexts.ts'
+  import {resolve, shouldNavigate} from '../../lib/utils.ts'
+  import type {LinkProps} from './Link.ts'
 
   let {
     children,
-    click,
-    to = '',
+    href: rawHref,
+    to = '', // fallback
+
     replace = false,
     state = {},
-    getProps = () => ({}),
     preserveScroll = false,
-    class: classVal,
+
     ...props
   }: LinkProps = $props()
 
@@ -19,7 +19,7 @@
   const {base} = useRouter()
   const {navigate} = useHistory()
 
-  let href = $derived(resolve(to, $base.uri))
+  let href = $derived(resolve(rawHref ?? to ?? '', $base.uri))
   let isCurrent = $derived(href === $location.pathname)
   let isPartiallyCurrent = $derived.by(() => {
     const pathSegments = $location.pathname.split('/').filter(Boolean)
@@ -37,19 +37,16 @@
     return true
   })
 
-  // let properties = $derived(
-  //   getProps({
-  //     location: $location,
-  //     href,
-  //     isPartiallyCurrent,
-  //     isCurrent,
-  //     // existingProps: props,
-  //   })
-  // )
+  let properties = $derived({
+    location: $location,
+    href,
+    isCurrent,
+    isPartiallyCurrent,
+  })
 
-  const onClick = (event: MouseEvent) => {
-    click?.(event)
-    if (shouldNavigate(event)) {
+  const onClick = (event: MouseEvent & {currentTarget: HTMLAnchorElement}) => {
+    props.onclick?.(event)
+    if (!event.defaultPrevented && shouldNavigate(event)) {
       event.preventDefault()
       // Don't push another entry to the history stack when the user
       // clicks on a Link to the page they are currently on.
@@ -61,11 +58,10 @@
 
 <a
   {href}
-  class={[classVal]}
   aria-current={isCurrent ? 'page' : undefined}
   data-active-link={isCurrent ? 'page' : isPartiallyCurrent ? 'step' : undefined}
   onclick={onClick}
   {...props}
 >
-  {@render children(Boolean(isCurrent))}
+  {@render children?.(properties)}
 </a>

@@ -1,19 +1,17 @@
-import type { Snippet } from 'svelte'
-import type { ClassValue, HTMLAnchorAttributes } from 'svelte/elements'
-import type { RouteLocation } from '../Route/Route.ts'
+import type {Snippet} from 'svelte'
+import type {HTMLAnchorAttributes} from 'svelte/elements'
+import type {RouteLocation} from '../Route/Route.ts'
 
 export type LinkProps = {
-  children: Snippet<[boolean]>
-  class?: ClassValue
+  // children?: Snippet<[isCurrent: boolean]>
+  children?: Snippet<[props: GetPropsParams]>
+  href?: string
+  /** @deprecated use `href` */
+  to?: string
 
-  to: string
   replace?: boolean
   preserveScroll?: boolean
-  state?: {
-    [k in string | number]: unknown
-  }
-  getProps?: (linkParams: GetPropsParams) => Record<string, any>
-  click?: (e: MouseEvent) => void
+  state?: { [k in string | number]: unknown }
 } & Omit<HTMLAnchorAttributes, 'href' | 'children'>
 
 export type GetPropsParams = {
